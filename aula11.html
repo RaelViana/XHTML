@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Angular</title>
+    </head> 
+    <body> 
+    
+      <a id='topo'><h1>Angular-js</h1></a>
+      
+      <a href="../aula10.html">Voltar</a>
+      
+  <ul>
+  
+    <li><a href='#O que é'>O que é o AngularJS</li>
+    <li><a href='#atualidades'>Atualidades do Angular</li>
+    <li><a href='#serviços'>A necessidade de serviços</li>
+    <li><a href='#praticas'>A necessidade de boas práticas</li>
+    <li><a href='#desenhando'>Desenhando serviços</a></li>       
+     
+  </ul>   
+  
+  
+    <a id='O que é'><h3>O que é o AngularJS</h3></a>
+ <p>  
+ O AngularJS é um framework open-source de desenvolvimento front-end que possibilita o desenvolvimento de aplicações web, com foco em simplificar tanto a     codificação quanto o processo de teste. Além disso, é possível integrá-lo com bibliotecas famosas como o <big>Bootstrap</big>, D3.js e o Apache <big>Cordova</big> (ou PhoneGap), ajudando a acelerar esse tipo de codificação como nunca antes tivemos.
+O <b>AngularJS também permite aos desenvolvedores web fazer uso da linguagem de marcação HTML</b> para definir associações de dados, validações, além de response handlers para lidar com as ações do usuário em um formato declarativo que também contribui para essa mesma aceleração. Com tudo isso em conjunto, a maior consequência é, de longe, o crescimento e enriquecimento das aplicações cada vez mais ricas em funcionalidades e recursos.
+
+</p>
+
+
+   <a id='atualidades'><h3>Atualidades do Angular</h3></a>
+ <p>
+   
+Neste artigo, trataremos de expor algumas formas de bem arquitetar e construir serviços no AngularJS que, por sua vez, endereçam as mais usadas e importantes camadas de uma aplicação desse tipo: autenticação, mensageria, logging, acesso a dados, além da camada de acesso às regras da lógica de negócio que é requisito obrigatório para qualquer aplicação que tenha um nível de complexidade moderado. Além disso, veremos também rapidamente como integrar serviços externos do próprio framework com bibliotecas de terceiros dentro de suas aplicações de tal forma que o <b>AngularJS possa tomar vantagem das mesmas com pouco esforço</b>, enquanto você analisa detalhadamente a forma como o framework realiza tais integrações.
+
+</p>
+
+
+ <a id='serviços'><h3>A necessidade de serviços</h3></a>
+<p>
+
+Em tempos onde muito se discute acerca do MVC no lado front-end, bem como das responsabilidades desse padrão no client side, inúmeras vertentes da comunidade de desenvolvimento front-end, muitas vezes em contraversão às que apoiam e suportam o lado back-end, dizem que a utilização de camadas que fornecem acesso direto a serviços é algo totalmente desnecessário e que foge às responsabilidades da mesma, devendo ser amparadas, portanto, pelas camadas que atuam no servidor da arquitetura. Para entender a contrapartida dessa discussão, é necessário que antes respondamos a algumas questões inerentes a tal dúvida: Por que serviços são realmente necessários no front-end? Como eles apoiam a sua aplicação? Quais são suas responsabilidades na aplicação de uma forma geral?
+A primeira sentença a ser analisada diz que “os serviços são a base de tudo”. Isto é, eles fornecem funcionalidades de forma transversal, solicitam e manipulam dados, se integram com outros serviços externos, e incorporam lógica de negócio, tudo isso de uma forma tão simples quanto um objeto JSON possa parecer (que é inclusive o tipo de dado mais usado para representá-los).
+Em alusão a uma situação um pouco mais lúdica, os serviços funcionam como a fundação de um prédio. Obviamente um prédio pode ser construído sem a necessidade de uma fundação, porém ele não irá durar tanto quanto duraria se a tivesse. Da mesma forma, sem serviços em uma aplicação, a mesma logo se tornará tão pesada que não se aguentará por muito tempo.
+
+</p>
+
+
+ <a id='praticas'><h3>A necessidade de boas práticas</h3></a>
+<p>
+
+Quando uma equipe de desenvolvimento se depara com um projeto novo, uma das primeiras e mais importantes ações é escolher um framework para facilitar a produtividade do projeto como um todo. Aliado a essa escolha, o arquiteto ou alguém com mais experiência terá o desafio de entender como o mesmo funciona e, mais importante que isso, como aplicar as boas práticas de programação a este framework.
+As boas práticas são como guias que nos ajudam a entender o melhor jeito de usar aquele framework, assim como estruturar a sua aplicação de forma a deixá-la manutenível, testável e reusável.
+O desenvolvimento utilizando módulos leva em consideração a unidade na aplicação como um todo. Isso quer dizer que cada componente deve ter sempre uma única e específica responsabilidade, caso contrário teremos uma discrepância na implementação e o modelo tenderá a se tornar cada vez mais complexo de manter.
+
+<br />
+<a href='#topo'>Voltar ao topo</a>
+
+</p>
+
+
+
+
+<a id='desenhando'><h3>Desenhando serviços</h3></a>
+<p>
+
+Antes de iniciarmos a implementação de fato dos nossos serviços, é preciso que o leitor tenha em mente algumas regras essenciais para a criação correta dos mesmos. Vejamos:
+· Antes de iniciar qualquer serviço, tome um tempo pensando sobre ele. Quais serão as suas funcionalidades (faça uma lista delas, no papel mesmo, se achar melhor)? Como criarei este(s) serviço(s) de modo que eu possa facilmente modificá-lo(s) no futuro, mantendo-o(s) sempre testável(eis) e manutenível(eis)?
+<big>· <i>Meça duas vezes, corte apenas uma</i></big>. Isso serve para te ensinar a não se apressar quando for criar serviços e/ou quaisquer implementações. Às vezes é melhor perder um bom tempo planejando direito o que você vai desenvolver, em vez de atropelar o desenvolvimento ágil e precisar refazer no futuro.
+<big>· <i>Foque no desenvolvedor, e não em você mesmo</i></big>. Isso quer dizer que, quando construir um serviço, pense em quem irá usá-lo. Muitas vezes esquecemos dessa premissa por não estarmos lidando com algo que será acessado diretamente por um usuário, pois tudo será abstraído pela “figura do desenvolvedor”. Coloque-se no lugar dele, e pergunte-se se, sendo você o desenvolvedor consumidor, você entenderia o serviço que criou e disponibilizou.
+<big>· <i>Faça apenas o que o nome do seu serviço manda fazer</i></big>. Essa prática já é muito comum entre codificadores para nomes de métodos, por exemplo. Se o seu método se chama cadastrarCliente(), adivinhe qual deve ser a única coisa que ele faz? O mesmo vale para os serviços.
+<big>· <i>Mantenha o mais usável possível</i></big>. Isso quer dizer que, se o seu serviço foi criado por alguma ferramenta de CRUD, por exemplo, que automaticamente gerou métodos de add(), remover(), alterar() e pesquisar(), mas no seu serviço só será usado o método de pesquisa, então remova os demais. Deixe-o simples e direto.
+<big>· <i>Documente a sua interface de serviço</i></big>. Isso será útil não só para outros desenvolvedores que venham a encarar o seu código no futuro, mas principalmente para você mesmo. Afinal, você não é obrigado a decorar tudo o que codifica. Existem inúmeras ferramentas que te ajudam nisso: JSDoc, YUIDoc, Ext Doc, ou algum plugin que a sua IDE disponibilize e que você se sinta à vontade para usar.
+<br />
+<a href='#topo'>Voltar ao topo</a>
+</p>
+      
+    </body>   
+</html>    
