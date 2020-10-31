@@ -1,0 +1,76 @@
+
+<html>
+    <head>    
+       <title>Aula18</title>    
+    </head>
+ <body>
+     <form action="aula18.html" method="get">
+
+         <input type="hidden" id="chave" value="1234"/>
+
+        <fieldset>
+            <legend>Infomações pessoais</legend>
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" value="Internauta" readonly="readonly"  /> <br /> 
+
+          Sexo: <br />
+          <input type="radio" name="sexo" value="M" tabindex="3"/>Masculino<br />
+          <input type="radio" name="sexo" value="F" tabindex="2" />Feminino<br />
+ 
+
+          <Label for="senha">Senha:
+            <input type="password"  id="senha" />             
+          </Label>
+          <br /> 
+        </fieldset>
+        
+        <fieldset>
+            <legend>Informações Profissionais</legend>
+         Conhecimentos: <br />
+         <input type="checkbox" name="conhecimentos" value="Java" />Java<br />
+         <input type="checkbox" name="conhecimentos" value="html" />HTML<br />
+         <input type="checkbox" name="conhecimentos" value="css" />CSS<br />
+         <input type="checkbox" name="conhecimentos" value="xslt" />XSLT<br />
+ 
+         Curriculo <br />
+         <input type="file" id="curriculo" /><br />
+ 
+         <input type="submit" value="Enviar" /><br />
+         <input type="reset" value="Limpa" /><br />
+         <input type="button" value="Validar Formulário" /><br />
+ 
+         Resumo:<br />
+         <textarea cols="30" rows="10" tabindex="1">Escreva seu Resumo</textarea> <br />
+        </fieldset>
+
+         País: <br  />
+         <select id="país">
+             <option value="BR">Brasil</option>
+             <option>China</option>
+             <option>Eua</option>
+             <option>Japão</option>
+             <option>Argentina</option>
+         </select>
+ 
+         Editores ou Navegadores: <br />
+         <select name="" id="en">
+             <optgroup label="Editores">
+                 <option>Notepad</option>
+                 <option>DreamWeaver</option>
+                 <option>Eclipse</option>
+                 <option>HTML-Kit</option>   
+             </optgroup>
+ 
+             <optgroup label="Navegadores">
+                 <option>Firefox</option>
+                 <option>IE</option>
+                 <option>Safari</option>
+                 <option>Chrome</option>   
+             </optgroup>
+         </select>
+ 
+ 
+     </form>
+     
+ </body>
+ </html>
